@@ -1,94 +1,1210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>North Gondar Communication Department</title>
- <link rel="stylesheet" href="style.css">
-  </head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desu Mamu | Computer Science & Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Desu Mamu, Computer Science student at Debark University—ready to solve any real-world problem using web, mobile, database, and system technologies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Desu Mamu | Computer Science & Full-Stack Developer" />
+  <meta property="og:description" content="Computer Science student at Debark University—ready to solve any problem using technology (Python, Java, C++, PHP, React, Next.js, Vue, Flutter, React Native)." />
+  <meta property="og:image" content="assets/desu-photo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans Ethiopic"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          animation: {
+            'blob': 'blob 8s infinite',
+            'cursor': 'cursor .8s step-end infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(28px, -40px) scale(1.08)' },
+              '66%': { transform: 'translate(-20px, 24px) scale(0.94)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            cursor: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #cv-modal,
+      #cv-printable-area,
+      #cv-printable-area * {
+        visibility: visible;
+      }
+      #cv-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+      #cv-modal-box {
+        box-shadow: none !important;
+        max-height: none !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+      }
+      #cv-modal-header {
+        display: none !important;
+      }
+      #cv-printable-area {
+        overflow: visible !important;
+        padding: 0 !important;
+        color: #0f172a !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-500 selection:text-white">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="#home" class="flex items-center gap-2.5 font-bold text-lg sm:text-xl tracking-tight group shrink-0">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-cyan-500 text-white flex items-center justify-center font-mono text-sm shadow-md group-hover:scale-105 transition-transform">
+          DM
+        </span>
+        <span data-i18n="brandName" class="bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+          Desu Mamu
+        </span>
+      </a>
+      <div id="desktop-nav" class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" data-nav="about" data-i18n="navAbout" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
+        <a href="#skills" data-nav="skills" data-i18n="navSkills" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Skills</a>
+        <a href="#experience" data-nav="experience" data-i18n="navExperience" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Experience & Education</a>
+        <a href="#projects" data-nav="projects" data-i18n="navProjects" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+        <a href="#contact" data-nav="contact" data-i18n="navContact" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <div role="group" aria-label="Language Selector" class="flex items-center bg-slate-100 dark:bg-slate-800/90 p-1 rounded-xl border border-slate-200/80 dark:border-slate-700/80 text-xs font-semibold">
+          <button type="button" data-lang="en" class="lang-btn px-2.5 py-1 rounded-lg bg-indigo-600 text-white transition-all">EN</button>
+          <button type="button" data-lang="am" class="lang-btn px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">አማርኛ</button>
+          <button type="button" data-lang="ti" class="lang-btn px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">ትግርኛ</button>
+        </div>
+        <button id="theme-toggle" type="button" aria-label="Toggle Dark Mode" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+          <svg id="sun-icon" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moon-icon" class="w-4 h-4 sm:w-5 sm:h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+        <button id="download-cv-btn" type="button" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold shadow-sm shadow-indigo-500/25 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span data-i18n="cvBtn">CV / Resume</span>
+        </button>
+        <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu" class="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 pt-3 pb-5 space-y-2">
+      <a href="#about" data-i18n="navAbout" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">About</a>
+      <a href="#skills" data-i18n="navSkills" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Skills</a>
+      <a href="#experience" data-i18n="navExperience" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Experience & Education</a>
+      <a href="#projects" data-i18n="navProjects" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Projects</a>
+      <a href="#contact" data-i18n="navContact" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900">Contact</a>
+      <button id="mobile-download-cv-btn" type="button" class="w-full mt-2 py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold flex items-center justify-center gap-2">
+        <span data-i18n="cvBtn">CV / Resume</span>
+      </button>
+    </div>
+  </header>
 
-<header>
-   <img style="border-radius: 50%;" src="Picture1.jpg" height="200px"width="300pX">
-  <h1>DKU Department of Computer Science</h1>
-  <p>Student Grade Registration & GPA Storage</p>
-</header>
-
-<nav>
-  <a href="home.html">Home</a>
-  <a href="news.html">News</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
-<section class="form-section">
-    <h2>Department Member Registration</h2>
-    <fieldset>
-  <form id="memberForm">
-    <input type="text" id="name" placeholder="Full Name" required>
-    <select id="sex" required>
-      <option value="">Select Sex</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="other">Other</option>
-    </select>
-    <input type="number" id="age" placeholder="Age" required>
-    <input type="text" id="department" placeholder="Department" required>
-    <input type="number" step="0.01" max="4.0" id="GPA" placeholder="GPA (Max 4.0)" required>
-    <button type="submit">Add Member</button>
-  </form>
-
-  <div class="button-group">
-    <button class="export-btn" onclick="exportToCSV()">Download CSV Report</button>
-    <button class="clear-btn" onclick="clearDatabase()">Clear All Records</button>
-    </fieldset>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Sex</th>
-        <th>Age</th>
-        <th>Department</th>
-        <th>GPA</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <h3><B>Member Table</B></h3>
-    <tbody id="memberTable"></tbody>
-  </table>
-</section>
-<section class="container">
-  <div class="box">
-    <h4>📍 Address</h4>
-    <p>North Gondar, Amhara Region, Ethiopia</p>
-    <p>Email: azanawalemu1@gmail.com</p>
-    <p>Phone: +251-409-766-15</p>
-     <p>Email: desumamu7@gmail.com</p>
-    <p>Phone: +251-630-676-44</p>
-  </div>
-  <div class="box">
-    <h4>📰 Latest Posts</h4>
-    <ul>
-      <li>New ]GPA Calculation Rules for 2018 E.C.</li>
-      <li>Registration Deadline Extended</li>
-      <li>Department Workshop on Computer Science Trends</li>
-      <li>Social media integration (YouTube and Facebook)</li>
-    </ul>
-  </div>
-</section>
-<div class="box">
-      <h5>📱 Follow Us</h5>
-      <div class="social-icons">
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
-        <a href="https://www.facebook.com" target="_blank">Facebook</a>
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+    <div class="absolute top-20 left-1/4 w-72 h-72 bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full filter blur-3xl animate-blob pointer-events-none"></div>
+    <div class="absolute top-28 right-1/4 w-72 h-72 bg-cyan-400/15 dark:bg-cyan-600/20 rounded-full filter blur-3xl animate-blob pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/80 dark:border-indigo-800/70 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-medium">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span data-i18n="heroBadge">Ready to Solve Any Problem Using Technology</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            <span data-i18n="heroGreeting">Hi, I’m</span>
+            <span data-i18n="heroName" class="bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400 bg-clip-text text-transparent"> Desu Mamu</span>
+          </h1>
+          <div class="text-xl sm:text-2xl font-mono font-semibold text-slate-700 dark:text-slate-200 min-h-[2.25rem] flex items-center justify-center lg:justify-start">
+            <span class="text-indigo-500 mr-2">&gt;</span>
+            <span id="typed-role"></span>
+            <span class="inline-block w-0.5 h-6 bg-indigo-500 ml-1 animate-cursor"></span>
+          </div>
+          <p data-i18n="heroTagline" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            I am Desu Mamu, a Computer Science student at Debark University—ready to solve any real-world problem by using technology.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+            <a href="#projects" data-i18n="heroCtaProjects" class="px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm sm:text-base font-semibold shadow-lg shadow-indigo-500/25 hover:-translate-y-0.5 transition-all">
+              View Projects
+            </a>
+            <a href="#contact" data-i18n="heroCtaContact" class="px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 text-sm sm:text-base font-semibold shadow-sm hover:-translate-y-0.5 transition-all">
+              Contact Me
+            </a>
+            <button id="hero-cv-btn" type="button" class="px-6 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white text-sm sm:text-base font-semibold border border-slate-700/60 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              <span data-i18n="downloadCvShort">Download CV (PDF)</span>
+            </button>
+          </div>
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
+            <span data-i18n="languagesLabel" class="uppercase tracking-wider font-semibold text-indigo-600 dark:text-indigo-400">Languages:</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">English</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">አማርኛ (Amharic)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">ትግርኛ (Tigrigna)</span>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative w-full max-w-sm rounded-3xl bg-white dark:bg-slate-900 p-3.5 shadow-2xl border border-slate-200/80 dark:border-slate-800 group">
+            <div class="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+              <img
+                id="hero-photo"
+                src="assetsdesu-photo.jpg.png"
+                alt="Desu Mamu Portrait"
+                class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                onerror="this.onerror=null;this.src=&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 750'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231e1b4b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='750' fill='url(%23g)'/%3E%3Ccircle cx='300' cy='265' r='92' fill='%23818cf8' fill-opacity='0.25' stroke='%23818cf8' stroke-width='4'/%3E%3Cpath d='M145 535c0-86 70-150 155-150s155 64 155 150' fill='%23818cf8' fill-opacity='0.2' stroke='%2338bdf8' stroke-width='4'/%3E%3Ctext x='300' y='615' text-anchor='middle' fill='%23e2e8f0' font-family='sans-serif' font-size='32' font-weight='bold'%3EDesu Mamu%3C/text%3E%3C/svg%3E&quot;;"
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-transparent p-5 text-white">
+                <div class="text-base font-bold" data-i18n="heroName">Desu Mamu</div>
+                <div class="text-xs font-mono text-cyan-300 mt-0.5" data-i18n="photoCaption">Computer Science • Debark University</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-<footer>
-  <p>&copy; 2018 E.C North Gondar Communication Department</p>
-</footer>
+  <!-- ABOUT ME SECTION -->
+  <section id="about" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 space-y-4">
+          <span data-i18n="aboutLabel" class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">About Me</span>
+          <h2 data-i18n="aboutHeading" class="text-3xl sm:text-4xl font-bold leading-tight">Turning Real Challenges Into Practical Technology</h2>
+          <div class="p-5 rounded-2xl bg-gradient-to-br from-indigo-600 to-cyan-600 text-white shadow-lg">
+            <p class="text-xs font-mono uppercase tracking-wider text-indigo-100 mb-1" data-i18n="coreMindsetLabel">Core Mindset</p>
+            <p data-i18n="coreMindsetQuote" class="text-base sm:text-lg font-bold leading-snug">
+              “I am ready to solve any problem by using technology—building reliable web, mobile, and system solutions where they are needed most.”
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-7 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p data-i18n="aboutPara1" class="text-base sm:text-lg">
+            I am Desu Mamu, a Computer Science student at Debark University. I am deeply committed to using software engineering, mobile & web development, databases, and networking to solve everyday academic, institutional, and community problems.
+          </p>
+          <p data-i18n="aboutPara2">
+            Whether designing a campus food ordering and payment workflow, building cross-platform mobile apps, configuring networks and servers, or writing clean backend logic, I approach every challenge with discipline, adaptability, and a problem-first mindset.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+              <div class="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400">CS</div>
+              <div data-i18n="statMajor" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Debark University</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+              <div class="text-2xl font-extrabold text-cyan-600 dark:text-cyan-400">10+</div>
+              <div data-i18n="statTech" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Languages & Stacks</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+              <div class="text-2xl font-extrabold text-violet-600 dark:text-violet-400">3</div>
+              <div data-i18n="statLangs" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Spoken Languages</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+              <div class="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">100%</div>
+              <div data-i18n="statReady" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Problem-Solving Drive</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span data-i18n="skillsLabel" class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Skills</span>
+        <h2 data-i18n="skillsHeading" class="text-3xl sm:text-4xl font-bold mt-1">Languages, Frameworks & Engineering Stack</h2>
+        <p data-i18n="skillsSubtitle" class="text-slate-600 dark:text-slate-400 mt-3">
+          A well-rounded toolkit across programming languages, frontend frameworks, UI libraries, and backend/database systems.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div class="w-11 h-11 rounded-2xl bg-indigo-500/15 text-indigo-500 flex items-center justify-center font-mono font-bold mb-4">&lt;/&gt;</div>
+          <h3 data-i18n="skillCatLangs" class="text-lg font-bold mb-3">Programming Languages</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">Python</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">Java</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">C++</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">PHP</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">HTML / CSS / JS</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">SQL</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div class="w-11 h-11 rounded-2xl bg-cyan-500/15 text-cyan-500 flex items-center justify-center font-mono font-bold mb-4">UI</div>
+          <h3 data-i18n="skillCatFrontend" class="text-lg font-bold mb-3">Frontend Frameworks & Libraries</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">React</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">Next.js</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">Vue</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">Flutter</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">React Native</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center font-mono font-bold mb-4">DB</div>
+          <h3 data-i18n="skillCatCssSystems" class="text-lg font-bold mb-3">CSS Frameworks, DB & Systems</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200/60 dark:border-cyan-800/60">Tailwind CSS</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200/60 dark:border-cyan-800/60">Bootstrap</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">MySQL</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">Git & GitHub</span>
+            <span class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">Linux & Networking</span>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="flex justify-between text-sm font-semibold mb-1.5">
+            <span>HTML / CSS / JavaScript / Tailwind CSS / Bootstrap</span>
+            <span class="font-mono text-indigo-600 dark:text-indigo-400">90%</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" style="width: 90%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm font-semibold mb-1.5">
+            <span>React, Next.js, Vue & Flutter / React Native</span>
+            <span class="font-mono text-indigo-600 dark:text-indigo-400">86%</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" style="width: 86%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm font-semibold mb-1.5">
+            <span>Python, PHP & MySQL Database Systems</span>
+            <span class="font-mono text-indigo-600 dark:text-indigo-400">88%</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" style="width: 88%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm font-semibold mb-1.5">
+            <span>Java & C++ Object-Oriented / Systems Logic</span>
+            <span class="font-mono text-indigo-600 dark:text-indigo-400">85%</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & EDUCATION SECTION -->
+  <section id="experience" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span data-i18n="expLabel" class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Experience & Education</span>
+        <h2 data-i18n="expHeading" class="text-3xl sm:text-4xl font-bold mt-1">Academic Foundation & Practical Experience</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="space-y-5">
+          <h3 data-i18n="eduTitle" class="text-xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+            Education
+          </h3>
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-semibold">B.Sc. Program</span>
+              <span class="text-xs font-mono text-slate-400">Debark University</span>
+            </div>
+            <h4 data-i18n="eduDegree" class="text-lg font-bold">Bachelor of Science in Computer Science</h4>
+            <p data-i18n="eduDesc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Studying algorithms, data structures, object-oriented programming, database management systems, software engineering, and computer networks with a focus on practical problem-solving.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-5">
+          <h3 data-i18n="pracTitle" class="text-xl font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
+            Industrial Practice & Hands-On Experience
+          </h3>
+          <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 space-y-4">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span data-i18n="pracRole" class="font-bold text-base">Industrial Practice — Network & Data Center Directorate</span>
+                <span class="text-xs font-mono text-cyan-600 dark:text-cyan-400">Hands-On</span>
+              </div>
+              <p data-i18n="pracDesc" class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Gained practical experience in enterprise networking, mini data center & server operations, desktop/hardware maintenance, and database-driven web applications.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span data-i18n="builderRole" class="font-bold text-base">Full-Stack Web & Mobile Application Builder</span>
+                <span class="text-xs font-mono text-indigo-600 dark:text-indigo-400">Applied Projects</span>
+              </div>
+              <p data-i18n="builderDesc" class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Developed practical systems using PHP, MySQL, JavaScript, React, Next.js, Vue, Flutter, and React Native—focusing on usability, reliability, and clear architecture.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SHOWCASE -->
+  <section id="projects" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span data-i18n="projLabel" class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Projects</span>
+        <h2 data-i18n="projHeading" class="text-3xl sm:text-4xl font-bold mt-1">Practical Solutions Built With Technology</h2>
+        <p data-i18n="projSubtitle" class="text-slate-600 dark:text-slate-400 mt-3">
+          Filter projects by category or click any card to view full details and repository links.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+        <button type="button" data-filter="all" data-i18n="filterAll" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white shadow-sm transition-all">All</button>
+        <button type="button" data-filter="web" data-i18n="filterWeb" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">Web & Systems</button>
+        <button type="button" data-filter="mobile" data-i18n="filterMobile" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">Mobile & AI</button>
+        <button type="button" data-filter="core" data-i18n="filterCore" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">Core CS & Infra</button>
+      </div>
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span data-i18n="contactLabel" class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Contact</span>
+        <h2 data-i18n="contactHeading" class="text-3xl sm:text-4xl font-bold mt-1">Let’s Work Together to Solve Problems</h2>
+        <p data-i18n="contactSubtitle" class="text-slate-600 dark:text-slate-400 mt-3">
+          Reach out directly via email, GitHub, LinkedIn, or send a message using the form below.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800">
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <h3 data-i18n="directChannels" class="text-xl font-bold">Direct Channels</h3>
+
+            <!-- Email: Opens Gmail compose in a new tab + copies email address -->
+            <a
+              id="direct-email-link"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=desumamu7@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70 hover:border-indigo-500 transition-colors"
+            >
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-500 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs text-slate-400">Email</div>
+                <div class="text-sm font-semibold hover:text-indigo-500 break-all">desumamu7@gmail.com</div>
+                <div id="email-copy-status" class="text-[11px] text-emerald-500 font-medium mt-0.5 hidden"></div>
+              </div>
+            </a>
+
+            <!-- GitHub: Desu's actual GitHub profile -->
+            <a
+              href="https://github.com/desumamu7-commits"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70 hover:border-indigo-500 transition-colors"
+            >
+              <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400">GitHub</div>
+                <div class="text-sm font-semibold">github.com/desumamu7-commits</div>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/desu-mamu" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70 hover:border-indigo-500 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400">LinkedIn</div>
+                <div class="text-sm font-semibold">linkedin.com/in/desu-mamu</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form id="contact-form" class="lg:col-span-7 space-y-4">
+          <input type="hidden" id="web3forms-key" value="b6d22192-1bf3-42b7-8cb3-ff51e6cf4e90" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="sender-name" data-i18n="formNameLabel" class="block text-sm font-medium mb-1.5">Your Name</label>
+              <input id="sender-name" name="name" type="text" required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+            <div>
+              <label for="sender-email" data-i18n="formEmailLabel" class="block text-sm font-medium mb-1.5">Your Email</label>
+              <input id="sender-email" name="email" type="email" required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+          </div>
+          <div>
+            <label for="sender-subject" data-i18n="formSubjectLabel" class="block text-sm font-medium mb-1.5">Subject</label>
+            <input id="sender-subject" name="subject" type="text" required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label for="sender-message" data-i18n="formMessageLabel" class="block text-sm font-medium mb-1.5">Message</label>
+            <textarea id="sender-message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+          </div>
+          <button id="form-submit-btn" type="submit" data-i18n="formSendBtn" class="w-full py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-lg shadow-indigo-500/25 transition-all">
+            Send Direct Message
+          </button>
+          <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 text-sm font-medium"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-slate-200/80 dark:border-slate-800/80 text-center text-sm text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4">
+      <p>&copy; <span id="current-year"></span> Desu Mamu • Debark University Computer Science</p>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div id="modal-banner" class="h-32 bg-gradient-to-r from-indigo-600 to-cyan-500 p-6 flex items-end justify-between relative">
+        <button id="close-modal-btn" type="button" aria-label="Close Modal" class="absolute top-4 right-4 p-2 rounded-xl bg-black/30 hover:bg-black/50 text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <span id="modal-badge" class="px-3 py-1 rounded-lg bg-black/30 text-white text-xs font-mono">Category</span>
+      </div>
+      <div class="p-6 sm:p-8 space-y-4">
+        <h3 id="modal-title" class="text-2xl font-bold"></h3>
+        <p id="modal-desc" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        <div id="modal-tags" class="flex flex-wrap gap-2 pt-2"></div>
+        <div id="modal-links" class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINTABLE / DOWNLOADABLE MULTILINGUAL CV MODAL -->
+  <div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div id="cv-modal-box" class="bg-white text-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div id="cv-modal-header" class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
+        <span class="font-bold text-sm sm:text-base">Desu Mamu — CV / Resume</span>
+        <div class="flex items-center gap-2">
+          <button id="print-cv-btn" type="button" data-i18n="printCvBtn" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold">Print / Save PDF</button>
+          <button id="close-cv-btn" type="button" data-i18n="closeBtn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">Close</button>
+        </div>
+      </div>
+      <div id="cv-printable-area" class="p-6 sm:p-8 overflow-y-auto space-y-5 text-sm leading-relaxed">
+        <div class="border-b border-slate-200 pb-4">
+          <h2 class="text-2xl font-extrabold text-slate-900" data-i18n="heroName">Desu Mamu</h2>
+          <p class="text-indigo-700 font-semibold" data-i18n="photoCaption">Computer Science • Debark University</p>
+          <p class="text-slate-600 text-xs mt-1">Email: desumamu7@gmail.com • GitHub: github.com/desumamu7-commits • LinkedIn: linkedin.com/in/desu-mamu</p>
+        </div>
+        <div>
+          <h3 class="font-bold uppercase text-xs tracking-wider text-slate-500 mb-1" data-i18n="cvObjTitle">Objective</h3>
+          <p data-i18n="cvObjText">Computer Science student at Debark University, ready to solve any problem by using technology through practical web, mobile, database, and system solutions.</p>
+        </div>
+        <div>
+          <h3 class="font-bold uppercase text-xs tracking-wider text-slate-500 mb-1" data-i18n="cvSkillsTitle">Technical Skills</h3>
+          <p><strong>Languages:</strong> Python, Java, C++, PHP, HTML, CSS, JavaScript, SQL</p>
+          <p><strong>Frontend & Mobile:</strong> React, Next.js, Vue, Flutter, React Native</p>
+          <p><strong>CSS, DB & Systems:</strong> Tailwind CSS, Bootstrap, MySQL, Git & GitHub, Linux & Networking</p>
+        </div>
+        <div>
+          <h3 class="font-bold uppercase text-xs tracking-wider text-slate-500 mb-1" data-i18n="cvProjectsTitle">Key Projects</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-700" id="cv-projects-list"></ul>
+        </div>
+        <div>
+          <h3 class="font-bold uppercase text-xs tracking-wider text-slate-500 mb-1" data-i18n="cvEduExpTitle">Education & Experience</h3>
+          <p><strong data-i18n="eduDegree">B.Sc. in Computer Science</strong> — Debark University</p>
+          <p><strong data-i18n="pracRole">Industrial Practice — Network & Data Center Directorate</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const externalCvUrl = "desu_mamu_cv (1).pdf";
+    const contactEmail = "desumamu7@gmail.com";
+
+    const translations = {
+      en: {
+        brandName: "Desu Mamu",
+        navAbout: "About",
+        navSkills: "Skills",
+        navExperience: "Experience & Education",
+        navProjects: "Projects",
+        navContact: "Contact",
+        cvBtn: "CV / Resume",
+        downloadCvShort: "Download CV (PDF)",
+        printCvBtn: "Print / Save PDF",
+        closeBtn: "Close",
+        heroBadge: "Ready to Solve Any Problem Using Technology",
+        heroGreeting: "Hi, I’m",
+        heroName: "Desu Mamu",
+        heroTagline: "I am Desu Mamu, a Computer Science student at Debark University—ready to solve any real-world problem by using technology.",
+        heroCtaProjects: "View Projects",
+        heroCtaContact: "Contact Me",
+        languagesLabel: "Languages:",
+        photoCaption: "Computer Science • Debark University",
+        aboutLabel: "About Me",
+        aboutHeading: "Turning Real Challenges Into Practical Technology",
+        coreMindsetLabel: "Core Mindset",
+        coreMindsetQuote: "“I am ready to solve any problem by using technology—building reliable web, mobile, and system solutions where they are needed most.”",
+        aboutPara1: "I am Desu Mamu, a Computer Science student at Debark University. I am committed to using software engineering, mobile & web development, databases, and networking to solve everyday academic, institutional, and community problems.",
+        aboutPara2: "Whether designing a campus food ordering and payment workflow, building cross-platform mobile apps, configuring networks and servers, or writing clean backend logic, I approach every challenge with discipline, adaptability, and a problem-first mindset.",
+        statMajor: "Debark University",
+        statTech: "Languages & Stacks",
+        statLangs: "Spoken Languages",
+        statReady: "Problem-Solving Drive",
+        skillsLabel: "Skills",
+        skillsHeading: "Languages, Frameworks & Engineering Stack",
+        skillsSubtitle: "Core programming languages, modern frontend frameworks, styling tools, and databases.",
+        skillCatLangs: "Programming Languages",
+        skillCatFrontend: "Frontend Frameworks & Libraries",
+        skillCatCssSystems: "CSS Frameworks, DB & Systems",
+        expLabel: "Experience & Education",
+        expHeading: "Academic Foundation & Practical Experience",
+        eduTitle: "Education",
+        eduDegree: "Bachelor of Science in Computer Science",
+        eduDesc: "Building strong foundations in algorithms, OOP, databases, software engineering, and computer networks at Debark University.",
+        pracTitle: "Industrial Practice & Hands-On Experience",
+        pracRole: "Industrial Practice — Network & Data Center Directorate",
+        pracDesc: "Hands-on practice in enterprise networking, mini data center & server operations, desktop maintenance, and database-driven web applications.",
+        builderRole: "Full-Stack Web & Mobile Application Builder",
+        builderDesc: "Developing practical web and mobile solutions using Python, Java, C++, PHP, MySQL, React, Next.js, Vue, Flutter, and React Native.",
+        projLabel: "Projects",
+        projHeading: "Practical Solutions Built With Technology",
+        projSubtitle: "Filter projects by category or click any card to inspect details and GitHub repositories.",
+        filterAll: "All",
+        filterWeb: "Web & Systems",
+        filterMobile: "Mobile & AI",
+        filterCore: "Core CS & Infra",
+        viewGithubBtn: "View on GitHub",
+        emailCopiedMsg: "Opened Gmail & copied desumamu7@gmail.com",
+        contactLabel: "Contact",
+        contactHeading: "Let’s Work Together to Solve Problems",
+        contactSubtitle: "Reach out directly via email, GitHub, LinkedIn, or send a message below.",
+        directChannels: "Direct Channels",
+        formNameLabel: "Your Name",
+        formEmailLabel: "Your Email",
+        formSubjectLabel: "Subject",
+        formMessageLabel: "Message",
+        formSendBtn: "Send Direct Message",
+        formSending: "Sending...",
+        formSuccess: "Thank you, {name}! Your message has been sent successfully.",
+        formMailtoFallback: "Opening Gmail compose to send the message directly to desumamu7@gmail.com...",
+        cvObjTitle: "Objective",
+        cvObjText: "Computer Science student at Debark University, ready to solve any problem by using technology through practical web, mobile, database, and system solutions.",
+        cvSkillsTitle: "Technical Skills",
+        cvProjectsTitle: "Key Projects",
+        cvEduExpTitle: "Education & Experience",
+        roles: [
+          "Computer Science Student @ Debark University",
+          "Ready to Solve Any Problem Using Technology",
+          "Full-Stack Web & Mobile Developer",
+          "Python • Java • C++ • PHP • React • Flutter"
+        ],
+        projects: [
+          {
+            id: 1,
+            cat: "web",
+            badge: "Web & Systems",
+            title: "Debark University Student Lunch Ordering & Payment System",
+            shortDesc: "PHP & MySQL web platform with Telebirr/CBE Birr reference verification and 6-digit OTP pickup tokens.",
+            fullDesc: "A full-stack web platform built with HTML5, CSS3, Bootstrap, JavaScript, PHP, and MySQL to streamline student meal ordering, mobile payment reference verification (Telebirr & CBE Birr), and secure 6-digit OTP food pickup.",
+            tags: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 2,
+            cat: "mobile",
+            badge: "Mobile & AI",
+            title: "StepTrackerApp & Amharic Crop Disease Detector",
+            shortDesc: "Cross-platform mobile apps built with React Native (Expo) and Flutter + TensorFlow Lite for real-world utility.",
+            fullDesc: "Mobile engineering projects including StepTrackerApp (React Native & Expo sensor-based step counter with AsyncStorage) and an AI-powered Amharic Crop Disease Detector built with Flutter, FastAPI, and TensorFlow Lite.",
+            tags: ["React Native", "Flutter", "TensorFlow Lite", "FastAPI"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 3,
+            cat: "core",
+            badge: "Core CS & Infra",
+            title: "Begena Web Platform & OpenGL Stadium Simulation",
+            shortDesc: "Dynamic PHP/MySQL cultural web portal with authentication plus a C++ OpenGL/GLUT 3D match simulation.",
+            fullDesc: "Includes an award-winning PHP & MySQL web application dedicated to the Ethiopian Begena with user authentication, alongside a C++ OpenGL/GLUT animated stadium and 12-player football simulation.",
+            tags: ["PHP & MySQL", "C++ / OpenGL", "Python", "Networking"],
+            github: "https://github.com/desumamu7-commits"
+          }
+        ]
+      },
+      am: {
+        brandName: "ደሱ ማሙ",
+        navAbout: "ስለ እኔ",
+        navSkills: "ክህሎቶች",
+        navExperience: "ልምድ እና ትምህርት",
+        navProjects: "ፕሮጀክቶች",
+        navContact: "ያግኙኝ",
+        cvBtn: "ሲቪ / CV",
+        downloadCvShort: "ሲቪ አውርድ (PDF)",
+        printCvBtn: "አትም / PDF አውርድ",
+        closeBtn: "ዝጋ",
+        heroBadge: "ቴክኖሎጂን በመጠቀም ማንኛውንም ችግር ለመፍታት ዝግጁ ነኝ",
+        heroGreeting: "ሰላም፣ እኔ",
+        heroName: "ደሱ ማሙ",
+        heroTagline: "እኔ ደሱ ማሙ ነኝ፤ በደባርቅ ዩኒቨርሲቲ የኮምፒውተር ሳይንስ ተማሪ ሲሆን ቴክኖሎጂን በመጠቀም ማንኛውንም ችግር ለመፍታት ዝግጁ ነኝ።",
+        heroCtaProjects: "ፕሮጀክቶችን ይመልከቱ",
+        heroCtaContact: "ያግኙኝ",
+        languagesLabel: "ቋንቋዎች:",
+        photoCaption: "ኮምፒውተር ሳይንስ • ደባርቅ ዩኒቨርሲቲ",
+        aboutLabel: "ስለ እኔ",
+        aboutHeading: "ተግዳሮቶችን በቴክኖሎጂ ወደ ተግባራዊ መፍትሄ መቀየር",
+        coreMindsetLabel: "ዋና አላማ",
+        coreMindsetQuote: "“ቴክኖሎጂን በመጠቀም ማንኛውንም ችግር ለመፍታት ዝግጁ ነኝ — አስተማማኝ የዌብ፣ የሞባይል እና የሲስተም መፍትሄዎችን እሰራለሁ።”",
+        aboutPara1: "እኔ ደሱ ማሙ በደባርቅ ዩኒቨርሲቲ የኮምፒውተር ሳይንስ ተማሪ ነኝ። የሶፍትዌር ልማትን፣ የዌብና የሞባይል ፍሬምወርኮችን፣ ዳታቤዞችን እና ኔትወርኪንግን በመጠቀም የዕለት ተዕለት ችግሮችን ለመፍታት ቆርጬ ተነስቻለሁ።",
+        aboutPara2: "ከዌብ እና ሞባይል አፕሊኬሽኖች እስከ ኔትወርክ እና ሲስተም ስራዎች ድረስ ንጹህ ኮድ፣ ፈጣን መላመድ እና ተግባራዊ ውጤት ላይ አተኩራለሁ።",
+        statMajor: "ደባርቅ ዩኒቨርሲቲ",
+        statTech: "ቋንቋዎች እና ቴክኖሎጂዎች",
+        statLangs: "የምችላቸው ቋንቋዎች",
+        statReady: "ችግር የመፍታት ዝግጁነት",
+        skillsLabel: "ክህሎቶች",
+        skillsHeading: "ቋንቋዎች፣ ፍሬምወርኮች እና ቴክኒካል ክህሎቶች",
+        skillsSubtitle: "የፕሮግራሚንግ ቋንቋዎች፣ የፍሮንትኤንድ ፍሬምወርኮች፣ የCSS ቱሎች እና ዳታቤዞች።",
+        skillCatLangs: "የፕሮግራሚንግ ቋንቋዎች",
+        skillCatFrontend: "Frontend Frameworks & Libraries",
+        skillCatCssSystems: "CSS Frameworks፣ DB እና ሲስተምስ",
+        expLabel: "ልምድ እና ትምህርት",
+        expHeading: "የትምህርት መሰረት እና ተግባራዊ ልምድ",
+        eduTitle: "ትምህርት",
+        eduDegree: "የቢ.ኤስ.ሲ. ዲግሪ በኮምፒውተር ሳይንስ",
+        eduDesc: "በደባርቅ ዩኒቨርሲቲ በአልጎሪዝም፣ በOOP፣ በዳታቤዝ፣ በሶፍትዌር ኢንጂነሪንግ እና በኮምፒውተር ኔትወርክስ ጠንካራ መሰረት በመገንባት ላይ እገኛለሁ።",
+        pracTitle: "ኢንዱስትሪያል ፕራክቲስ እና ተግባራዊ ልምድ",
+        pracRole: "ኢንዱስትሪያል ፕራክቲስ — የኔትወርክ እና ዳታ ሴንተር ዳይሬክቶሬት",
+        pracDesc: "በኢንተርፕራይዝ ኔትወርኪንግ፣ በሰርቨር እና ዳታ ሴንተር አስተዳደር፣ በኮምፒውተር ጥገና እና በዳታቤዝ ዌብ አፕሊኬሽኖች ተግባራዊ ልምድ አግኝቻለሁ።",
+        builderRole: "የዌብ እና የሞባይል አፕሊኬሽን ገንቢ",
+        builderDesc: "Python፣ Java፣ C++፣ PHP፣ MySQL፣ React፣ Next.js፣ Vue፣ Flutter እና React Native በመጠቀም ተግባራዊ ሲስተሞችን እሰራለሁ።",
+        projLabel: "ፕሮጀክቶች",
+        projHeading: "በቴክኖሎጂ የተሰሩ ተግባራዊ መፍትሄዎች",
+        projSubtitle: "ፕሮጀክቶችን በዘርፍ ይለዩ ወይም ዝርዝር ለማየት ካርዱን ይጫኑ።",
+        filterAll: "ሁሉም",
+        filterWeb: "ዌብ እና ሲስተም",
+        filterMobile: "ሞባይል እና AI",
+        filterCore: "ኮር CS እና ኔትወርክ",
+        viewGithubBtn: "በGitHub ይመልከቱ",
+        emailCopiedMsg: "Gmail ተከፍቷል፤ desumamu7@gmail.com ተቀድቷል",
+        contactLabel: "ያግኙኝ",
+        contactHeading: "ችግሮችን በጋራ ለመፍታት እንስራ",
+        contactSubtitle: "በኢሜይል፣ በGitHub፣ በLinkedIn ወይም ከታች ባለው ፎርም ቀጥታ መልዕክት ይላኩልኝ።",
+        directChannels: "ቀጥታ መገናኛዎች",
+        formNameLabel: "ስምዎ",
+        formEmailLabel: "ኢሜይልዎ",
+        formSubjectLabel: "ርዕስ",
+        formMessageLabel: "መልዕክት",
+        formSendBtn: "መልዕክት ላክ",
+        formSending: "በመላክ ላይ...",
+        formSuccess: "እናመሰግናለን {name}! መልዕክትዎ በተሳካ ሁኔታ ተልኳል።",
+        formMailtoFallback: "መልዕክትዎን ወደ desumamu7@gmail.com ለመላክ Gmail በመክፈት ላይ...",
+        cvObjTitle: "አላማ (Objective)",
+        cvObjText: "በደባርቅ ዩኒቨርሲቲ የኮምፒውተር ሳይንስ ተማሪ ሲሆን ቴክኖሎጂን በመጠቀም ማንኛውንም ችግር ለመፍታት ዝግጁ ነኝ።",
+        cvSkillsTitle: "ቴክኒካል ክህሎቶች",
+        cvProjectsTitle: "ዋና ዋና ፕሮጀክቶች",
+        cvEduExpTitle: "ትምህርት እና ልምድ",
+        roles: [
+          "የኮምፒውተር ሳይንስ ተማሪ @ ደባርቅ ዩኒቨርሲቲ",
+          "ቴክኖሎጂን በመጠቀም ማንኛውንም ችግር ለመፍታት ዝግጁ ነኝ",
+          "Full-Stack Web & Mobile Developer",
+          "Python • Java • C++ • PHP • React • Flutter"
+        ],
+        projects: [
+          {
+            id: 1,
+            cat: "web",
+            badge: "ዌብ እና ሲስተም",
+            title: "የደባርቅ ዩኒቨርሲቲ የተማሪዎች ምግብ ማዘዣ እና ክፍያ ሲስተም",
+            shortDesc: "በTelebirr እና CBE Birr ክፍያ ማረጋገጫ እና ባለ 6 አሃዝ OTP ኮድ የተገነባ የPHP እና MySQL ሲስተም።",
+            fullDesc: "ተማሪዎች ምግብ በቀላሉ እንዲያዙ፣ በቴሌብር እና በሲቢኢ ብር ክፍያቸውን እንዲያረጋግጡ እና በ6 አሃዝ OTP ኮድ ምግባቸውን እንዲወስዱ የተሰራ ሲስተም።",
+            tags: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 2,
+            cat: "mobile",
+            badge: "ሞባይል እና AI",
+            title: "StepTrackerApp እና የሰብል በሽታ መለያ (Amharic Crop AI)",
+            shortDesc: "በReact Native እና Flutter + TensorFlow Lite የተሰሩ ዘመናዊ የሞባይል መተግበሪያዎች።",
+            fullDesc: "የእርምጃ ቆጣሪ የሞባይል መተግበሪያ (StepTrackerApp) እንዲሁም በአማርኛ የሰብል በሽታዎችን የሚለይ የAI መተግበሪያ።",
+            tags: ["React Native", "Flutter", "TensorFlow Lite", "FastAPI"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 3,
+            cat: "core",
+            badge: "ኮር CS እና ኔትወርክ",
+            title: "የበገና ዌብሳይት እና የC++ OpenGL ስታዲየም ሲሙሌሽን",
+            shortDesc: "የተጠቃሚ ምዝገባ ያለው የበገና ዌብሳይት እና በC++ OpenGL የተሰራ የእግር ኳስ ጨዋታ ሲሙሌሽን።",
+            fullDesc: "በPHP እና MySQL የተሰራ ተሸላሚ የበገና ዌብ ፕላትፎርም እና በC++ OpenGL/GLUT የተሰራ ባለ 12 ተጫዋቾች የስታዲየም አኒሜሽን።",
+            tags: ["PHP & MySQL", "C++ / OpenGL", "Python", "Networking"],
+            github: "https://github.com/desumamu7-commits"
+          }
+        ]
+      },
+      ti: {
+        brandName: "ደሱ ማሙ",
+        navAbout: "ብዛዕባይ",
+        navSkills: "ክእለታት",
+        navExperience: "ተመኩሮን ትምህርትን",
+        navProjects: "ፕሮጀክትታት",
+        navContact: "ርኸቡኒ",
+        cvBtn: "ሲቪ / CV",
+        downloadCvShort: "ሲቪ ኣውርድ (PDF)",
+        printCvBtn: "ሕተም / PDF ኣውርድ",
+        closeBtn: "ዕጾ",
+        heroBadge: "ቴክኖሎጂ ተጠቒመ ዝኾነ ጸገም ንምፍታሕ ድሉው እየ",
+        heroGreeting: "ሰላም፣ ኣነ",
+        heroName: "ደሱ ማሙ",
+        heroTagline: "ኣነ ደሱ ማሙ እየ፤ ኣብ ዩኒቨርሲቲ ደባርቅ ተምሃራይ ኮምፒዩተር ሳይንስ ኮይነ ቴክኖሎጂ ተጠቒመ ዝኾነ ጸገም ንምፍታሕ ድሉው እየ።",
+        heroCtaProjects: "ፕሮጀክትታት ርአ",
+        heroCtaContact: "ርኸቡኒ",
+        languagesLabel: "ቋንቋታት:",
+        photoCaption: "ኮምፒዩተር ሳይንስ • ዩኒቨርሲቲ ደባርቅ",
+        aboutLabel: "ብዛዕባይ",
+        aboutHeading: "ብጸገማት ዝምለስ ግብራዊ ቴክኖሎጂ ምህናጽ",
+        coreMindsetLabel: "ቀንዲ ዕላማ",
+        coreMindsetQuote: "“ቴክኖሎጂ ተጠቒመ ዝኾነ ጸገም ንምፍታሕ ድሉው እየ — እሙን ናይ ዌብ፣ ሞባይልን ሲስተምን መፍትሒታት እሰርሕ።”",
+        aboutPara1: "ኣነ ደሱ ማሙ ኣብ ዩኒቨርሲቲ ደባርቅ ተምሃራይ ኮምፒዩተር ሳይንስ እየ። ብሶፍትዌር ልምዓት፣ ፍሬምወርክታት፣ ዳታቤዝን ኔትወርኪንግን ንብዙሓት ጸገማት መፍትሒ ንምሃብ እጽዕር።",
+        aboutPara2: "ካብ ዌብን ሞባይልን ኣፕሊኬሽን ክሳብ ኔትወርክን ሲስተምን ጽሩይ ኮድን ግብራዊ ውጽኢትን የቕድም።",
+        statMajor: "ዩኒቨርሲቲ ደባርቅ",
+        statTech: "ቋንቋታትን ቴክኖሎጂን",
+        statLangs: "ዝዛረቦም ቋንቋታት",
+        statReady: "ድልውነት ንምፍታሕ ጸገም",
+        skillsLabel: "ክእለታት",
+        skillsHeading: "ቋንቋታት፣ ፍሬምወርክታትን ቴክኒካል ክእለታትን",
+        skillsSubtitle: "ቋንቋታት ፕሮግራሚንግ፣ ፍሮንትኤንድ ፍሬምወርክታት፣ CSSን ዳታቤዝን።",
+        skillCatLangs: "ቋንቋታት ፕሮግራሚንግ",
+        skillCatFrontend: "Frontend Frameworks & Libraries",
+        skillCatCssSystems: "CSS Frameworks፣ DBን ሲስተምስን",
+        expLabel: "ተመኩሮን ትምህርትን",
+        expHeading: "ትምህርታዊ መሰረትን ግብራዊ ተመኩሮን",
+        eduTitle: "ትምህርቲ",
+        eduDegree: "ቢ.ኤስ.ሲ. ዲግሪ ኣብ ኮምፒዩተር ሳይንስ",
+        eduDesc: "ኣብ ዩኒቨርሲቲ ደባርቅ ኣብ ኣልጎሪዝም፣ OOP፣ ዳታቤዝ፣ ሶፍትዌር ኢንጂነሪንግን ኔትወርክን መሰረታዊ ትምህርቲ ይወስድ ኣለኹ።",
+        pracTitle: "ኢንዱስትሪያል ፕራክቲስን ግብራዊ ተመኩሮን",
+        pracRole: "ኢንዱስትሪያል ፕራክቲስ — ዳይሬክቶሬት ኔትወርክን ዳታ ሴንተርን",
+        pracDesc: "ኣብ ኔትወርኪንግ፣ ሰርቨርን ዳታ ሴንተርን፣ ጽገና ኮምፒዩተር ከምኡውን ዳታቤዝ ዌብ ኣፕሊኬሽናት ግብራዊ ተመኩሮ ረኺበ።",
+        builderRole: "ናይ ዌብን ሞባይልን ኣፕሊኬሽን ሰራሒ",
+        builderDesc: "Python፣ Java፣ C++፣ PHP፣ MySQL፣ React፣ Next.js፣ Vue፣ Flutterን React Nativeን ተጠቒመ ፕሮጀክትታት እሰርሕ።",
+        projLabel: "ፕሮጀክትታት",
+        projHeading: "ብቴክኖሎጂ ዝተሰርሑ ግብራዊ መፍትሒታት",
+        projSubtitle: "ብዓይነት ንምፍላይ ወይ ዝርዝር ንምርኣይ ካርድ ይጠውቑ።",
+        filterAll: "ኩሉ",
+        filterWeb: "ዌብን ሲስተምን",
+        filterMobile: "ሞባይልን AIን",
+        filterCore: "ኮር CSን ኔትወርክን",
+        viewGithubBtn: "ኣብ GitHub ርአ",
+        emailCopiedMsg: "Gmail ተኸፊቱ፤ desumamu7@gmail.com ተቀዲሑ",
+        contactLabel: "ርኸቡኒ",
+        contactHeading: "ጸገማት ብሓባር ንምፍታሕ ንስራሕ",
+        contactSubtitle: "ብኢመይል፣ GitHub፣ LinkedIn ወይ ብታሕቲ ዘሎ ፎርም መልእኽቲ ስደዱለይ።",
+        directChannels: "ቀጥታ መራኸቢታት",
+        formNameLabel: "ስምኩም",
+        formEmailLabel: "ኢመይልኩም",
+        formSubjectLabel: "ርእሲ",
+        formMessageLabel: "መልእኽቲ",
+        formSendBtn: "መልእኽቲ ስደድ",
+        formSending: "ይስደድ ኣሎ...",
+        formSuccess: "የቐንየልና {name}! መልእኽትኹም ብዓወት ተላኢኹ ኣሎ።",
+        formMailtoFallback: "መልዕክትኹም ናብ desumamu7@gmail.com ንምልኣኽ Gmail ይኽፈት ኣሎ...",
+        cvObjTitle: "ዕላማ (Objective)",
+        cvObjText: "ኣብ ዩኒቨርሲቲ ደባርቅ ተምሃራይ ኮምፒዩተር ሳይንስ ኮይነ ቴክኖሎጂ ተጠቒመ ዝኾነ ጸገም ንምፍታሕ ድሉው እየ።",
+        cvSkillsTitle: "ቴክኒካል ክእለታት",
+        cvProjectsTitle: "ቀንዲ ፕሮጀክትታት",
+        cvEduExpTitle: "ትምህርትን ተመኩሮን",
+        roles: [
+          "ተምሃራይ ኮምፒዩተር ሳይንስ @ ዩኒቨርሲቲ ደባርቅ",
+          "ቴክኖሎጂ ተጠቒመ ዝኾነ ጸገም ንምፍታሕ ድሉው እየ",
+          "Full-Stack Web & Mobile Developer",
+          "Python • Java • C++ • PHP • React • Flutter"
+        ],
+        projects: [
+          {
+            id: 1,
+            cat: "web",
+            badge: "ዌብን ሲስተምን",
+            title: "ሲስተም መእዘዚ መግብን ክፍሊትን ተምሃሮ ዩኒቨርሲቲ ደባርቅ",
+            shortDesc: "ብTelebirrን CBE Birrን ክፍሊት መረጋገጺ ከምኡውን ብ6 ኣሃዝ OTP ዝሰርሕ PHPን MySQLን ሲስተም።",
+            fullDesc: "ተምሃሮ መግቢ ንምእዛዝ፣ ብቴሌብርን ሲቢኢ ብርን ክፍሊቶም ንምርግጋጽን ብ6 ኣሃዝ OTP ኮድ ንምውሳድን ዝተሰርሐ ሲስተም።",
+            tags: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 2,
+            cat: "mobile",
+            badge: "ሞባይልን AIን",
+            title: "StepTrackerApp ከምኡውን መለለዪ ሕማም ዘራእቲ (Crop AI)",
+            shortDesc: "ብReact Nativeን Flutter + TensorFlow Liteን ዝተሰርሑ ዘመናዊ ናይ ሞባይል ኣፕሊኬሽናት።",
+            fullDesc: "ናይ ስጉምቲ መቑጸሪ ሞባይል ኣፕሊኬሽን (StepTrackerApp) ከምኡውን ብኣምሓርኛ ሕማም ዘራእቲ ዝፈሊ ናይ AI ኣፕሊኬሽን።",
+            tags: ["React Native", "Flutter", "TensorFlow Lite", "FastAPI"],
+            github: "https://github.com/desumamu7-commits"
+          },
+          {
+            id: 3,
+            cat: "core",
+            badge: "ኮር CSን ኔትወርክን",
+            title: "ዌብሳይት በገና ከምኡውን C++ OpenGL ስታዲየም ሲሙሌሽን",
+            shortDesc: "ናይ ተጠቀምቲ መእተዊ ዘለዎ ዌብሳይት በገናን ብC++ OpenGL ዝተሰርሐ ናይ ኩዕሶ እግሪ ሲሙሌሽንን።",
+            fullDesc: "ብPHPን MySQLን ዝተሰርሐ ዌብ ፕላትፎርም በገና ከምኡውን ብC++ OpenGL/GLUT ዝተሰርሐ ናይ 12 ተጻወትቲ ስታዲየም ሲሙሌሽን።",
+            tags: ["PHP & MySQL", "C++ / OpenGL", "Python", "Networking"],
+            github: "https://github.com/desumamu7-commits"
+          }
+        ]
+      }
+    };
+
+    let currentLang = localStorage.getItem("lang") || "en";
+    if (!translations[currentLang]) currentLang = "en";
+    let currentFilter = "all";
+    const htmlEl = document.documentElement;
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+
+    function syncThemeIcons() {
+      const isDark = htmlEl.classList.contains("dark");
+      sunIcon.classList.toggle("hidden", !isDark);
+      moonIcon.classList.toggle("hidden", isDark);
+    }
+    syncThemeIcons();
+
+    themeToggleBtn.addEventListener("click", () => {
+      htmlEl.classList.toggle("dark");
+      localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
+      syncThemeIcons();
+    });
+
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+    });
+
+    const typedRoleEl = document.getElementById("typed-role");
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeRoleTick() {
+      const list = translations[currentLang].roles;
+      const word = list[roleIndex % list.length];
+      if (!deleting) {
+        typedRoleEl.textContent = word.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === word.length) {
+          deleting = true;
+          setTimeout(typeRoleTick, 1700);
+          return;
+        }
+      } else {
+        typedRoleEl.textContent = word.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % list.length;
+        }
+      }
+      setTimeout(typeRoleTick, deleting ? 35 : 70);
+    }
+    typeRoleTick();
+
+    const projectsGrid = document.getElementById("projects-grid");
+    const modal = document.getElementById("project-modal");
+
+    function renderProjects() {
+      const dict = translations[currentLang];
+      const items = dict.projects;
+      const filtered = currentFilter === "all" ? items : items.filter(p => p.cat === currentFilter);
+      const cvList = document.getElementById("cv-projects-list");
+      if (cvList) {
+        cvList.innerHTML = items.map(p => `<li><strong>${p.title}:</strong> ${p.shortDesc}</li>`).join("");
+      }
+      projectsGrid.innerHTML = "";
+      filtered.forEach(proj => {
+        const card = document.createElement("article");
+        card.className = "rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between cursor-pointer";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-lg text-xs font-mono bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-semibold">${proj.badge}</span>
+              <span class="text-xs font-mono text-slate-400">#0${proj.id}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2.5">${proj.title}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${proj.shortDesc}</p>
+          </div>
+          <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex flex-wrap gap-1.5">
+            ${proj.tags.map(t => `<span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${t}</span>`).join("")}
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          document.getElementById("modal-badge").textContent = proj.badge;
+          document.getElementById("modal-title").textContent = proj.title;
+          document.getElementById("modal-desc").textContent = proj.fullDesc;
+          document.getElementById("modal-tags").innerHTML = proj.tags
+            .map(t => `<span class="px-3 py-1 rounded-xl text-xs font-mono bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">${t}</span>`)
+            .join("");
+          document.getElementById("modal-links").innerHTML = `
+            <a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 dark:bg-indigo-600 hover:opacity-90 text-white text-xs sm:text-sm font-semibold transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              ${dict.viewGithubBtn}
+            </a>
+          `;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        });
+        projectsGrid.appendChild(card);
+      });
+    }
+
+    document.getElementById("close-modal-btn").addEventListener("click", () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    });
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    });
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        currentFilter = btn.dataset.filter;
+        document.querySelectorAll(".filter-btn").forEach(b => {
+          b.className = "filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all";
+        });
+        btn.className = "filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white shadow-sm transition-all";
+        renderProjects();
+      });
+    });
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("lang", lang);
+      document.documentElement.lang = lang;
+      const dict = translations[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.className = active
+          ? "lang-btn px-2.5 py-1 rounded-lg bg-indigo-600 text-white transition-all"
+          : "lang-btn px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all";
+      });
+      roleIndex = 0;
+      charIndex = 0;
+      deleting = false;
+      renderProjects();
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+
+    const directEmailLink = document.getElementById("direct-email-link");
+    const emailCopyStatus = document.getElementById("email-copy-status");
+    let emailCopyTimeout = null;
+    if (directEmailLink) {
+      directEmailLink.addEventListener("click", () => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(contactEmail).catch(() => {});
+        }
+        if (emailCopyStatus) {
+          if (emailCopyTimeout) clearTimeout(emailCopyTimeout);
+          emailCopyStatus.textContent = translations[currentLang].emailCopiedMsg;
+          emailCopyStatus.classList.remove("hidden");
+          emailCopyTimeout = setTimeout(() => {
+            emailCopyStatus.classList.add("hidden");
+            emailCopyStatus.textContent = "";
+          }, 4000);
+        }
+      });
+    }
+
+    const cvModal = document.getElementById("cv-modal");
+    function handleCvAction() {
+      if (externalCvUrl && externalCvUrl.trim() !== "" && externalCvUrl !== "YOUR_CV_LINK_HERE") {
+        window.open(externalCvUrl, "_blank", "noopener,noreferrer");
+        return;
+      }
+      cvModal.classList.remove("hidden");
+      cvModal.classList.add("flex");
+    }
+
+    ["download-cv-btn", "mobile-download-cv-btn", "hero-cv-btn"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("click", handleCvAction);
+    });
+
+    document.getElementById("close-cv-btn").addEventListener("click", () => {
+      cvModal.classList.add("hidden");
+      cvModal.classList.remove("flex");
+    });
+    cvModal.addEventListener("click", (e) => {
+      if (e.target === cvModal) {
+        cvModal.classList.add("hidden");
+        cvModal.classList.remove("flex");
+      }
+    });
+    document.getElementById("print-cv-btn").addEventListener("click", () => {
+      window.print();
+    });
+
+    const contactForm = document.getElementById("contact-form");
+    const formFeedback = document.getElementById("form-feedback");
+    const submitBtn = document.getElementById("form-submit-btn");
+    let feedbackTimeout = null;
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const dict = translations[currentLang];
+      const nameVal = document.getElementById("sender-name").value.trim();
+      const emailVal = document.getElementById("sender-email").value.trim();
+      const subjectVal = document.getElementById("sender-subject").value.trim();
+      const messageVal = document.getElementById("sender-message").value.trim();
+      const accessKey = document.getElementById("web3forms-key").value.trim();
+
+      if (feedbackTimeout) {
+        clearTimeout(feedbackTimeout);
+      }
+
+      const showAutoDismissFeedback = (text, delayMs = 4000) => {
+        formFeedback.textContent = text;
+        formFeedback.classList.remove("hidden");
+        feedbackTimeout = setTimeout(() => {
+          formFeedback.classList.add("hidden");
+          formFeedback.textContent = "";
+        }, delayMs);
+      };
+
+      const formattedMessage = `Subject: ${subjectVal}\n\n${messageVal}`;
+
+      const triggerMailtoFallback = () => {
+        showAutoDismissFeedback(dict.formMailtoFallback, 4000);
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subjectVal)}&body=${encodeURIComponent(`From: ${nameVal} (${emailVal})\nSubject: ${subjectVal}\n\n${messageVal}`)}`;
+        window.open(gmailUrl, "_blank", "noopener,noreferrer");
+        contactForm.reset();
+      };
+
+      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        triggerMailtoFallback();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = dict.formSending;
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name: nameVal,
+            from_name: nameVal,
+            email: emailVal,
+            replyto: emailVal,
+            subject: subjectVal,
+            message: formattedMessage
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          contactForm.reset();
+          showAutoDismissFeedback(dict.formSuccess.replace("{name}", nameVal), 4000);
+        } else {
+          triggerMailtoFallback();
+        }
+      } catch (err) {
+        triggerMailtoFallback();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = dict.formSendBtn;
+      }
+    });
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll", () => {
+      let currentSection = "";
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) {
+          currentSection = sec.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        const isActive = link.dataset.nav === currentSection;
+        link.classList.toggle("text-indigo-600", isActive);
+        link.classList.toggle("dark:text-indigo-400", isActive);
+        link.classList.toggle("font-bold", isActive);
+      });
+    });
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    applyLanguage(currentLang);
+  </script>
 </body>
 </html>
